@@ -1,3 +1,3 @@
-## 0.0.1
-
-* TODO: Describe initial release.
+## 1.0.0
+- Initial release of `light_bottom_navigation_bar_plus`
+- Added customizable light bottom navigation bar with animation support.
