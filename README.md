@@ -7,10 +7,10 @@ A lightweight, animated, and customizable BottomNavigationBar widget for Flutter
 
 ## ✨ Features
 
-- ✅ All original functionality: smooth animated transitions, custom icon highlighting.  
-- 🆕 **New:** Support for text labels beneath icons, with customizable text styles.  
-- 🎨 Fully customizable: colors, sizes, animation durations.  
-- ⚡ Lightweight and easy to integrate into any Flutter project.
+✅ **All original functionality** – smooth animated transitions, custom icon highlighting.  
+🆕 **New** – support for text labels beneath icons, with customizable text styles.  
+🎨 **Fully customizable** – colors, sizes, animation durations.  
+⚡ **Lightweight** – easy to integrate into any Flutter project.
 
 ---
 
