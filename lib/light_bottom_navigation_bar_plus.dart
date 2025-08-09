@@ -157,7 +157,8 @@ class LightNavItem extends StatelessWidget {
                 ),
                 if (item.title != null) ...[
                   const SizedBox(height: 4),
-                  item.title!,
+                  _buildTitleWidget(
+                      item.title!, selected, item.selectedTitleColor, item.unSelectedTitleColor),
                 ],
               ],
             ),
@@ -165,6 +166,34 @@ class LightNavItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildTitleWidget(
+      Widget title, bool selected, Color? selectedColor, Color? unSelectedColor) {
+    if (title is Text) {
+      final Text originalText = title;
+      final TextStyle? originalStyle = originalText.style;
+      final Color? colorToApply = selected ? selectedColor : unSelectedColor;
+
+      return Text(
+        originalText.data ?? '',
+        key: originalText.key,
+        style: (originalStyle ?? const TextStyle()).copyWith(color: colorToApply),
+        strutStyle: originalText.strutStyle,
+        textAlign: originalText.textAlign,
+        textDirection: originalText.textDirection,
+        locale: originalText.locale,
+        softWrap: originalText.softWrap,
+        overflow: originalText.overflow,
+        textScaleFactor: originalText.textScaleFactor,
+        maxLines: originalText.maxLines,
+        semanticsLabel: originalText.semanticsLabel,
+        textWidthBasis: originalText.textWidthBasis,
+        textHeightBehavior: originalText.textHeightBehavior,
+      );
+    } else {
+      return title;
+    }
   }
 }
 
@@ -184,6 +213,8 @@ class LightBottomNavigationBarPlusItem {
     this.borderBottomWidth = 3,
     this.backgroundShadowColor = const Color(0xFF6c5ce7),
     this.title, // теперь Widget
+    this.selectedTitleColor,
+    this.unSelectedTitleColor,
   })  : assert(size >= 7),
         assert(borderBottomWidth >= 1);
 
@@ -199,4 +230,6 @@ class LightBottomNavigationBarPlusItem {
   final double borderBottomWidth;
   final Color backgroundShadowColor;
   final Widget? title;
+  final Color? selectedTitleColor;
+  final Color? unSelectedTitleColor;
 }
