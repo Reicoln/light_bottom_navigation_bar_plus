@@ -1,18 +1,14 @@
 library light_bottom_navigation_bar_plus;
 
-
 /* Imports */
-
 import 'package:flutter/material.dart';
 
 /* Main Class */
 
-///Amazing BottomNavigationBar plus widget , you can use it for your pro UI/UX
 // ignore: must_be_immutable
 class LightBottomNavigationBarPlus extends StatefulWidget {
-  ///The Constructor of LightBottomNavigationBar.
-  ///items is required.
-  LightBottomNavigationBarPlus({super.key,
+  LightBottomNavigationBarPlus({
+    super.key,
     required this.items,
     this.currentIndex = 0,
     this.height = 70.0,
@@ -27,74 +23,38 @@ class LightBottomNavigationBarPlus extends StatefulWidget {
         assert(currentIndex < items.length),
         assert(currentIndex >= 0),
         assert(height >= 25),
-  // assert(backgroundColor != null),
-  // assert(curve != null),
-  // assert(duration != null),
         assert(elevation >= 0.0);
-  // assert(padding != null);
 
-  /* Variables */
-
-  ///[items] List of LightBottomNavigationBarItem to show them in your BottomNavigationBar.
   final List<LightBottomNavigationBarPlusItem> items;
-
-  ///[currentIndex] The tab to display.
   final int currentIndex;
-
-  ///[height] Height of the BottomNavigationBar.
   final double height;
-
-  ///[backgroundColor] backgroundColor of BottomNavigationBar.
   final Color backgroundColor;
-
-  ///[curve] The transition curve.
   final Curve curve;
-
-  ///[duration] The transition duration.
   final Duration duration;
-
-  ///[padding] The padding surrounding the entire widget.
-  ///
-  /// You can use to adding floating effect.
   final EdgeInsets padding;
-
-  ///[elevation] The elevation of the widget.
   final double elevation;
-
-  ///[onSelected] Callback method , Return the index of the tab that was tapping.
   ValueChanged<int>? onSelected = (int index) {};
 
   @override
-
-  /// Creating state fo LightBottomNavigationBar.
   State<StatefulWidget> createState() => _LightBottomNavigationBarPlusState();
 }
 
 /* LightBottomNavigationBar Widget Class */
 
-/// This class is represent BottomNavigationBar Widget.
-class _LightBottomNavigationBarPlusState extends State<LightBottomNavigationBarPlus> {
-  /// This class is represent BottomNavigationBar Widget.
+class _LightBottomNavigationBarPlusState
+    extends State<LightBottomNavigationBarPlus> {
   int selected = 0;
 
   @override
-
-  /// using the widget.
   LightBottomNavigationBarPlus get widget => super.widget;
 
   @override
-
-  /// When initialize the widget.
   void initState() {
-    /// Super initialize.
     super.initState();
-
     selected = widget.currentIndex;
   }
 
   @override
-
-  /// Building the widget.
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.padding,
@@ -104,22 +64,22 @@ class _LightBottomNavigationBarPlusState extends State<LightBottomNavigationBarP
         child: InkWell(
           child: Row(
             children: List.generate(
-                widget.items.length,
-                    (index) => Expanded(
-                  child: LightNavItem(
-                    item: widget.items[index],
-                    selected: selected == index,
-                    height: widget.height,
-                    curve: widget.curve,
-                    duration: widget.duration,
-                    changeIndex: () {
-                      ///Change the state.
-                      setState(() {});
-                      selected = index;
-                      widget.onSelected!(index);
-                    },
-                  ),
-                )),
+              widget.items.length,
+              (index) => Expanded(
+                child: LightNavItem(
+                  item: widget.items[index],
+                  selected: selected == index,
+                  height: widget.height,
+                  curve: widget.curve,
+                  duration: widget.duration,
+                  changeIndex: () {
+                    setState(() {});
+                    selected = index;
+                    widget.onSelected!(index);
+                  },
+                ),
+              ),
+            ),
           ),
         ),
       ),
@@ -129,7 +89,6 @@ class _LightBottomNavigationBarPlusState extends State<LightBottomNavigationBarP
 
 /* LightNavItem Widget Class */
 
-/// A tab to display in LightBottomNavigationBar.
 class LightNavItem extends StatelessWidget {
   const LightNavItem({
     super.key,
@@ -165,25 +124,26 @@ class LightNavItem extends StatelessWidget {
             decoration: BoxDecoration(
               border: selected
                   ? Border(
-                  bottom: BorderSide(
-                      color: item.borderBottomColor,
-                      width: item.borderBottomWidth))
+                      bottom: BorderSide(
+                          color: item.borderBottomColor,
+                          width: item.borderBottomWidth))
                   : const Border(
-                  bottom: BorderSide(color: Colors.transparent, width: 0)),
+                      bottom:
+                          BorderSide(color: Colors.transparent, width: 0)),
               gradient: selected
                   ? LinearGradient(
-                colors: [
-                  item.backgroundShadowColor.withOpacity(0.5),
-                  Colors.transparent,
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              )
+                      colors: [
+                        item.backgroundShadowColor.withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    )
                   : const LinearGradient(
-                colors: [Colors.transparent, Colors.transparent],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
+                      colors: [Colors.transparent, Colors.transparent],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -195,14 +155,9 @@ class LightNavItem extends StatelessWidget {
                       ? item.selectedIconColor
                       : item.unSelectedIconColor.withOpacity(0.5),
                 ),
-                if (item.label.isNotEmpty) ...[
+                if (item.title != null) ...[
                   const SizedBox(height: 4),
-                  Text(
-                    item.label,
-                    style: selected
-                        ? item.selectedTextStyle
-                        : item.unSelectedTextStyle,
-                  ),
+                  item.title!,
                 ],
               ],
             ),
@@ -213,10 +168,8 @@ class LightNavItem extends StatelessWidget {
   }
 }
 
-
 /* Model Class */
 
-/// A tab to display in LightBottomNavigationBar.
 class LightBottomNavigationBarPlusItem {
   const LightBottomNavigationBarPlusItem({
     this.unSelectedIcon = Icons.star_border_outlined,
@@ -230,9 +183,7 @@ class LightBottomNavigationBarPlusItem {
     this.borderBottomColor = const Color(0xFF6c5ce7),
     this.borderBottomWidth = 3,
     this.backgroundShadowColor = const Color(0xFF6c5ce7),
-    this.label = '', // 🔹 новое поле
-    this.selectedTextStyle = const TextStyle(color: Colors.white, fontSize: 12),
-    this.unSelectedTextStyle = const TextStyle(color: Colors.white54, fontSize: 12),
+    this.title, // теперь Widget
   })  : assert(size >= 7),
         assert(borderBottomWidth >= 1);
 
@@ -247,8 +198,5 @@ class LightBottomNavigationBarPlusItem {
   final Color borderBottomColor;
   final double borderBottomWidth;
   final Color backgroundShadowColor;
-  final String label;
-  final TextStyle selectedTextStyle;
-  final TextStyle unSelectedTextStyle;
+  final Widget? title;
 }
-
