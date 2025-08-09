@@ -20,7 +20,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  light_bottom_navigation_bar_plus: ^1.0.1
+  light_bottom_navigation_bar_plus: ^1.1.2
 ```
 
 Import the package:
@@ -47,28 +47,76 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(), // Пример с тёмной темой
       home: Scaffold(
         body: const Center(
           child: Text('Your page content here'),
         ),
-        bottomNavigationBar: LightBottomNavigationBar(
-          currentIndex: 1,
+        bottomNavigationBar: LightBottomNavigationBarPlus(
+          currentIndex: 0,
+          height: 70,
+          backgroundColor: Colors.black87,
+          elevation: 8,
+          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 400),
           onSelected: (index) => print('Selected tab: $index'),
           items: const [
-            LightBottomNavigationBarItem(
+            LightBottomNavigationBarPlusItem(
               unSelectedIcon: Icons.home_outlined,
               selectedIcon: Icons.home,
-              label: 'Home',
+              title: Text(
+                'Home',
+                style: TextStyle(color: Colors.blue),
+              ),
+              size: 30,
+              backgroundShadowColor: Colors.blue,
+              borderBottomColor: Colors.blue,
+              borderBottomWidth: 3,
+              splashColor: Colors.blue,
+              selectedIconColor: Colors.blue,
+              unSelectedIconColor: Colors.blueGrey,
+              highlightColor: Colors.lightBlueAccent,
+              hoverColor: Colors.lightBlueAccent,
+              selectedTitleColor: Colors.blue,
+              unSelectedTitleColor: Colors.blueGrey,
             ),
-            LightBottomNavigationBarItem(
+            LightBottomNavigationBarPlusItem(
               unSelectedIcon: Icons.search_outlined,
               selectedIcon: Icons.search,
-              label: 'Search',
+              title: Text(
+                'Search',
+                style: TextStyle(color: Colors.green),
+              ),
+              size: 30,
+              backgroundShadowColor: Colors.green,
+              borderBottomColor: Colors.green,
+              borderBottomWidth: 3,
+              splashColor: Colors.green,
+              selectedIconColor: Colors.green,
+              unSelectedIconColor: Colors.greenAccent,
+              highlightColor: Colors.lightGreenAccent,
+              hoverColor: Colors.lightGreenAccent,
+              selectedTitleColor: Colors.green,
+              unSelectedTitleColor: Colors.greenAccent,
             ),
-            LightBottomNavigationBarItem(
+            LightBottomNavigationBarPlusItem(
               unSelectedIcon: Icons.star_border_outlined,
               selectedIcon: Icons.star,
-              label: 'Favorites',
+              title: Text(
+                'Favorites',
+                style: TextStyle(color: Colors.orange),
+              ),
+              size: 30,
+              backgroundShadowColor: Colors.orange,
+              borderBottomColor: Colors.orange,
+              borderBottomWidth: 3,
+              splashColor: Colors.orange,
+              selectedIconColor: Colors.orange,
+              unSelectedIconColor: Colors.orangeAccent,
+              highlightColor: Colors.deepOrange,
+              hoverColor: Colors.deepOrange,
+              selectedTitleColor: Colors.orange,
+              unSelectedTitleColor: Colors.orangeAccent,
             ),
           ],
         ),
@@ -76,6 +124,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 ```
 
 ---

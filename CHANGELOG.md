@@ -5,6 +5,6 @@
 ## 1.0.1
 - Minor changes
 
-## 1.1.0
-- Added new function change text wiget color
+## 1.1.2
+- Added new function change text widget color
 
