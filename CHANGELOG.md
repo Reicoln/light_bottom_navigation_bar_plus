@@ -8,3 +8,5 @@
 ## 1.1.1
 - Added new function change text widget color
 
+## 1.1.2
+- Added new function can hide text when it is not selected

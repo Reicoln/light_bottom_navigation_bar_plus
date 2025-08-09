@@ -155,7 +155,7 @@ class LightNavItem extends StatelessWidget {
                       ? item.selectedIconColor
                       : item.unSelectedIconColor.withOpacity(0.5),
                 ),
-                if (item.title != null) ...[
+                if (item.title != null && selected) ...[
                   const SizedBox(height: 4),
                   _buildTitleWidget(
                       item.title!, selected, item.selectedTitleColor, item.unSelectedTitleColor),

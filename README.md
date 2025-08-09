@@ -20,7 +20,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  light_bottom_navigation_bar_plus: ^1.1.1
+  light_bottom_navigation_bar_plus: ^1.1.2
 ```
 
 Import the package:
@@ -132,7 +132,7 @@ class MyApp extends StatelessWidget {
 ## 📖 Additional Information
 
 This package enhances the original **light_bottom_navigation_bar** by adding:  
-- Text labels under icons for better accessibility and clarity.  
+- Text title under icons for better accessibility and clarity.  
 - More flexible customization options for developers.  
 
 Contributions, bug reports, or feature requests are welcome on the GitHub repository.
