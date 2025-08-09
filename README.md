@@ -20,7 +20,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  light_bottom_navigation_bar_plus: ^1.1.2
+  light_bottom_navigation_bar_plus: ^1.1.1
 ```
 
 Import the package:
