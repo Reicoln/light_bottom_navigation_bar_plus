@@ -1,6 +1,6 @@
 name: light_bottom_navigation_bar_plus
 description: "A customized version of LightBottomNavigationBar with label text support."
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/ТВОЙ_GITHUB/light_bottom_navigation_bar_plus
 
 environment:
